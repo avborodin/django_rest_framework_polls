@@ -9,10 +9,12 @@ class QuestionTypeListView(generics.ListAPIView):
 	serializer_class = QuestionTypeSerializer
 	queryset = QuestionType.objects.all()
 
-class PollListView(generics.ListAPIView):
+class PollListView(generics.ListCreateAPIView):
 	serializer_class = PollSerializer
 	queryset = Poll.objects.all()
- 
+	def perform_create(self, serializer):
+		serializer.save(owner=self.request.user)
+
 class QuestionListView(generics.ListAPIView):
 	serializer_class = QuestionSerializer
 	queryset = Question.objects.all()

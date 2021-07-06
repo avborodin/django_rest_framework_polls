@@ -22,7 +22,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 class PollSerializer(serializers.ModelSerializer):
     class Meta:
         model = Poll
-        fields = ('id', 'title', 'start_dt', 'end_dt', 'descr')
+        fields = ('id', 'name', 'start_dt', 'end_dt', 'descr')
         read_only_fields = ('id', )
 
     def validate_start_date(self, value):
